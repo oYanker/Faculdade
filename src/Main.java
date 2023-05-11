@@ -9,7 +9,7 @@ public class Main {
 
         Personagem createChar = new Personagem();
         createChar.lista();
-        createChar.criar();
+        // createChar.criar();
 
 
     }

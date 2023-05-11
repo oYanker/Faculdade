@@ -1,6 +1,8 @@
 package model;
 
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Personagem {
     private int idade;
@@ -83,29 +85,44 @@ public class Personagem {
     //Listinha usando array para identificar o personagem com a maior e menor idade
     public void lista() {
 
-        int[] minhaLista = {18, 20, 40, 24, 29};
-        int min = minhaLista[0];
-        int max = minhaLista[0];
+        ArrayList<Integer> minhaLista = new ArrayList<>(100);
+        minhaLista.trimToSize();
+        minhaLista.add(18);
+        minhaLista.add(30);
+        minhaLista.add(26);
+        minhaLista.add(29);
+        minhaLista.add(40);
+
+        int min = minhaLista.get(0);
+        int max = minhaLista.get(0);
         int sum = 0, sub = 0;
         double avg = 0.0;
 
-        for (int i = 0; i < minhaLista.length; i++) {
-            if (minhaLista[i] < min) {
-                min = minhaLista[i];
+
+        for (int i = 0; i < minhaLista.size(); i++) {
+            if (minhaLista.get(i) < min) {
+                min = minhaLista.get(i);
 
             }
-            if (minhaLista[i] > max) {
-                max = minhaLista[i];
+            if (minhaLista.get(i) > max) {
+                max = minhaLista.get(i);
             }
-            sum += minhaLista[i];
-            sub -= minhaLista[i];
-            avg = sum / minhaLista.length;
+            //calculos simples usando o vetor
+            sum += minhaLista.get(i);
+            sub -= minhaLista.get(i);
+            avg = sum / minhaLista.size();
 
         }
+
+
+        minhaLista.remove(Integer.valueOf(min));
         System.out.println("O mais velho tem: " + max + " anos");
-        System.out.println("O menor tem: " + min + " anos");
+        System.out.println("O menor tem: " + min + " anos e foi removido da lista");
         System.out.println("A soma da idade de todos juntos é: " + sum + "\n A subtraçao de todos juntos é: " + sub);
         System.out.println("A média das idades é: " + avg);
+        for (int list : minhaLista) {
+            System.out.println(list);
+        }
 
     }
 }
